@@ -1,0 +1,57 @@
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Test 1</h1>
+  <p class="mb-4">Create a simple capture form to capture multiple users names,
+    surnames and cellphone numbers and store the data in an XML file.</p>
+
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+      <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Users Table</h6>
+      </div>
+      <a class="btn btn-primary ms-auto mt-3 me-2" [routerLink]="['/users/add']">Add User</a>
+      <div class="card-body">
+          <table class="table table-striped mb-0 no-wrap align-middle">
+              <thead>
+                <tr>
+                  <th class="text-center" scope="col">#</th>
+                  <th scope="col">First Name</th>
+                  <th scope="col">Last Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of users | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; let i = index">
+            
+                  <td class="text-center">
+                    {{ i + 1 }}
+                  </td>
+                  <td>{{ user.firstName }}</td>
+                  <td>{{ user.lastName }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>{{ user.phone }}</td>
+                  <td>
+                    <a class="link me-2"
+                      placement="top" ngbTooltip="Edit">
+                      <!-- <i class="far fa-edit"></i> -->
+                      <i class="fa-solid fa-eye"></i>
+                    </a>
+                    <a class="link me-2"
+                      placement="top" ngbTooltip="Edit">
+                      <!-- <i class="far fa-edit"></i> -->
+                      <i class="fa-solid fa-pen-to-square"></i>
+                    </a>
+                    <a href="javascript: void(0);" class="link" (click)="deleteUser(user)" placement="top"
+                      ngbTooltip="Delete">
+                      <i class="fa fa-trash" aria-hidden="true"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+      </div>
+  </div>
+</div>
