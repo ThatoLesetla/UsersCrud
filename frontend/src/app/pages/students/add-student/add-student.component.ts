@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Student } from 'src/app/core/models/Student';
@@ -32,16 +32,16 @@ export class AddStudentComponent {
 
   ngOnInit(): void {
     this.userForm = new FormGroup({
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
-      email: new FormControl(''),
-      phone: new FormControl(''),
-      bio: new FormControl(''),
-      country: new FormControl(''),
-      province: new FormControl(''),
-      city: new FormControl(''),
-      postalCode: new FormControl(''),
-      address: new FormControl('')
+      firstName: new FormControl('',  [Validators.required, Validators.maxLength(20)]),
+      lastName: new FormControl('',  [Validators.required, Validators.maxLength(20)]),
+      email: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(30)]),
+      phone: new FormControl('', [Validators.required, Validators.pattern(/^-?(0|[0-9]\d*)?$/), Validators.maxLength(20)]),
+      bio: new FormControl('', [Validators.required]),
+      country: new FormControl('', [Validators.required]),
+      province: new FormControl('', [Validators.required]),
+      city: new FormControl('', [Validators.required]),
+      postalCode: new FormControl('', [Validators.required, Validators.pattern(/^-?(0|[0-9]\d*)?$/), Validators.maxLength(20)]),
+      address: new FormControl('', [Validators.required])
     });
 
     this.getAllCountries();

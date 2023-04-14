@@ -1,4 +1,5 @@
-﻿using System;
+﻿using backend.Models;
+using System;
 using System.Linq.Expressions;
 
 namespace backend.Interfaces
@@ -10,6 +11,10 @@ namespace backend.Interfaces
         void Create(T entity);
         void Update(T entity);
         void Delete(T entity);
+
+        void SaveUserToXML(T entity);
+
+        List<T> LoadUsersFromXML();
     }
 }
 
